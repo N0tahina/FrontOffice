@@ -19,12 +19,6 @@ const App = () => {
     }
   }, []);
 
-  useEffect(() => {
-    // Check if the user is authenticated based on your logic (e.g., token presence)
-    const authToken = localStorage.getItem('authToken');
-    setIsAuthenticated(!!authToken);
-  }, []);
-
   // PrivateRoute component for securing routes
   const PrivateRoute = ({ element, path }) => {
     if(localStorage.getItem('authToken') === null){
