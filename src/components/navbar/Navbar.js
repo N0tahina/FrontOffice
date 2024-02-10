@@ -10,7 +10,7 @@ const Navbar = () => {
         <h2>Logo</h2>
         <ul>
           <li><Link to="/HomePage">List Annonce</Link></li>
-          <li><Link to="/MessagesPage">Messagerie</Link></li>
+          <li><Link to="/SignupPage">Messagerie</Link></li>
           <li><Link to="/HomePage">Filtre Annonce</Link></li>
           <li><Link to="/HomePage">Annonces Favorites</Link></li>
           <li><Link to="/HomePage">Deconnexion</Link></li>
