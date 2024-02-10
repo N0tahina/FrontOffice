@@ -26,27 +26,20 @@ const App = () => {
     setIsAuthenticated(!!authToken);
   }, []);
 
-  // Function to handle authentication
-  const handleAuthentication = () => {
-    // Implement your authentication logic here
-    setIsAuthenticated(true);
-  };
-
   // PrivateRoute component for securing routes
   const PrivateRoute = ({ element, path }) => {
-    useEffect(() => {
-      // Store the current page in localStorage when the route changes
-      localStorage.setItem('currentPage', path);
-    }, [path]);
-
-    return isAuthenticated ? element : <Navigate to="/" />;
+    if(localStorage.getItem('authToken') === null){
+        <Navigate to="/Login" />;
+    }else{
+        <Navigate to={path} />;
+    }
   };
 
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to={lien} />} /> {/* Redirection vers FeaturedCars */}
-        <Route path="/Login" element={<LoginPage handleAuthentication={handleAuthentication} />} />
+        <Route path="/Login" element={<LoginPage />} />
         {/* PrivateRoute is used for HomePage, CarDetail, and ModernForm */}
         <Route path="/HomePage" element={<PrivateRoute element={<HomePage />} path="/HomePage" />} />
         <Route path="/SignupPage" element={<SignupPage />} />
