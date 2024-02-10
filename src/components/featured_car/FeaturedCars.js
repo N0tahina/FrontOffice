@@ -63,7 +63,7 @@ const FeaturedCars = () => {
   };
 
   useEffect(() => {
-    if(localStorage.getItem('authToken')){
+    if(localStorage.getItem('authToken') === null){
       setDestination('/MessagesPage?id_auteur=');
     }
   }, []);

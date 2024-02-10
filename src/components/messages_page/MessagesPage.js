@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 const MessagesPage = () => {
   const { id } = useParams();
-
+  console.log("params : "+id);
   const [selectedUser, setSelectedUser] = useState(null);
   const [data, setData] = useState([]);
   const [discussionActuelle, setDiscussionActuelle] = useState([]);
