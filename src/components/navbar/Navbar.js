@@ -13,6 +13,7 @@ const Navbar = () => {
 
   const handleMessagerie = (e) => {
     e.preventDefault();
+    localStorage.setItem('lien','/MessagesPage');
     navigate('/MessagesPage');
   };
 
