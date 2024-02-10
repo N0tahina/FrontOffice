@@ -88,7 +88,7 @@ const FeaturedCars = () => {
             </div>
             <div className="button-container">
               <button className="details-button">Details</button>
-              {localStorage.getItem('authToken') !== null ? (
+              {localStorage.getItem('authToken') === null ? (
                   <Link to={destination + car.user.iduser}>Message</Link>
                 ) : (
                   <Link to={destination}>Message</Link>
