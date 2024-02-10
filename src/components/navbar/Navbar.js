@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const handleMessagerie = (e) => {
     e.preventDefault();
-    navigate('/HomePage', { state: { type: 2 } });
+    navigate('/MessagesPage');
   };
 
   const handleFiltre = (e) => {
