@@ -1,14 +1,13 @@
 // Navbar.js
 import React from 'react';
 import './Navbar.css'; // Import the CSS file for styling
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
   const handleDeconnexion = (e) => {
     e.preventDefault();
     localStorage.removeItem('authToken');
-    <Navigate to="FeaturedCars" />
   };
 
   return (
@@ -20,7 +19,7 @@ const Navbar = () => {
           <li><Link to="/MessagesPage">Messagerie</Link></li>
           <li><Link to="/CarFilters">Filtre Annonce</Link></li>
           <li><Link to="/FavoriteCars">Annonces Favorites</Link></li>
-          <li><Link to="/HomePage" onClick={handleDeconnexion}>Deconnexion</Link></li>
+          <li><Link to="/FeaturedCars" onClick={handleDeconnexion}>Deconnexion</Link></li>
           {/* Add more navbar elements if necessary */}
         </ul>
       </div>
