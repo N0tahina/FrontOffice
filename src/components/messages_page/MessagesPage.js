@@ -2,12 +2,11 @@ import React, { useState, useEffect} from 'react';
 import './MessagesPage.css';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const MessagesPage = () => {
-  const location = useLocation();
-  const id = location?.state?.id_auteur;
-  
+  const { id } = useParams();
+
   const [selectedUser, setSelectedUser] = useState(null);
   const [data, setData] = useState([]);
   const [discussionActuelle, setDiscussionActuelle] = useState([]);
