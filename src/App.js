@@ -11,7 +11,6 @@ import AnnonceUser from './components/annonces_user/AnnonceUser';
 
 const App = () => {
   // State to track authentication status
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [lien, setLien] = useState('/FeaturedCars');
 
   useEffect(() => {
