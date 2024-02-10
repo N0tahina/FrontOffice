@@ -20,11 +20,11 @@ const App = () => {
   }, []);
 
   // PrivateRoute component for securing routes
-  const PrivateRoute = ({ element, path }) => {
+  const PrivateRoute = ({ element }) => {
     if(localStorage.getItem('authToken') === null){
-        <Navigate to="/Login" />;
+        return <LoginPage />;
     }else{
-        <Navigate to={path} />;
+        return element;
     }
   };
 
@@ -34,13 +34,13 @@ const App = () => {
         <Route path="/" element={<Navigate to={lien} />} /> {/* Redirection vers FeaturedCars */}
         <Route path="/Login" element={<LoginPage />} />
         {/* PrivateRoute is used for HomePage, CarDetail, and ModernForm */}
-        <Route path="/HomePage" element={<PrivateRoute element={<HomePage />} path="/HomePage" />} />
+        <Route path="/HomePage" element={<PrivateRoute element={<HomePage />} />} />
         <Route path="/SignupPage" element={<SignupPage />} />
-        <Route path="/MessagesPage" element={<PrivateRoute element={<MessagesPage />} path="/MessagesPage" />} />
+        <Route path="/MessagesPage" element={<PrivateRoute element={<MessagesPage />} />} />
         <Route path="/FeaturedCars" element={<FeaturedCars />} /> {/* Route pour FeaturedCars */}
-        <Route path="/CarFilters" element={<PrivateRoute element={<CarFilters />} path="/CarFilters" />} />
-        <Route path="/FavoriteCars" element={<PrivateRoute element={<FavoriteCars />} path="/FavoriteCars" />} />
-        <Route path="/AnnonceUser" element={<PrivateRoute element={<AnnonceUser />} path="/AnnonceUser" />} />
+        <Route path="/CarFilters" element={<PrivateRoute element={<CarFilters />} />} />
+        <Route path="/FavoriteCars" element={<PrivateRoute element={<FavoriteCars />} />} />
+        <Route path="/AnnonceUser" element={<PrivateRoute element={<AnnonceUser />} />} />
       </Routes>
     </Router>
   );
