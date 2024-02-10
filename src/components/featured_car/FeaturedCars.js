@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './FeaturedCars.css';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
-import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const FeaturedCars = () => {
   const [data,setData] = useState([]);
+  const [destination,setDestination] = useState('/Login');
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage] = useState(3);
 
@@ -61,17 +62,11 @@ const FeaturedCars = () => {
     console.log(`Toggle favorite for car with ID: ${idannonce}`);
   };
 
-  const handleNavigateToMessagePage = (id) => {
-    if (localStorage.getItem('authToken') !== "true") {
-        console.log("Navigating to MessagesPage");
-        // navigate('/MessagesPage', { state: { id_auteur: id } });
-        <Navigate to={`/MessagesPage${id}`} />
-    } else {
-        console.log("Navigating to Login");
-        // navigate('/Login');
-        <Navigate to={`/Login`} />
+  useEffect(() => {
+    if(localStorage.getItem('authToken') === null){
+      setDestination('/MessagesPage?id_auteur=');
     }
-  };
+  }, []);
 
   return (
     <>
@@ -93,7 +88,11 @@ const FeaturedCars = () => {
             </div>
             <div className="button-container">
               <button className="details-button">Details</button>
-              <button className="message-button" onClick={() =>handleNavigateToMessagePage(car.user.iduser)}>Message</button>
+              {localStorage.getItem('authToken') !== null ? (
+                  <Link to={destination + car.user.iduser}>Message</Link>
+                ) : (
+                  <Link to={destination}>Message</Link>
+                )}
             </div>
             <div className="heart-container" title="Add to Favorites">
               <input
