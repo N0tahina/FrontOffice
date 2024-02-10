@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './FeaturedCars.css';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
+import { Link } from 'react-router-dom';
 
 const FeaturedCars = () => {
   const [data,setData] = useState([]);
